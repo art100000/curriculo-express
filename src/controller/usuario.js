@@ -107,7 +107,7 @@ const deleteUsuarioById = async (req, res) => {
         await Usuario.destroy({
             where: { id: id }
         });
-        res.status(204).send({
+        res.status(201).send({
             message: 'Usuário deletado com sucesso'
         });
     } catch (error) {
