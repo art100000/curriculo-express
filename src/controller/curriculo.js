@@ -28,6 +28,7 @@ const createCurriculo = async (req, res) => {
 
 const getAllCurriculos = async (req, res) => {
     try {
+        const { Curriculo } = req.context.models;
         const curriculos = await Curriculo.findAll();
         if (curriculos.length === 0) {
             return res.status(204).send({
@@ -47,6 +48,7 @@ const getAllCurriculos = async (req, res) => {
 
 const getCurriculoById = async (req, res) => {
     try {
+        const { Curriculo } = req.context.models;
         const { id } = req.params;
         const curriculo = await Curriculo.findByPk(id);
         if (!curriculo) {
@@ -67,6 +69,7 @@ const getCurriculoById = async (req, res) => {
 
 const updateCurriculoById = async (req, res) => {
     try {
+        const { Curriculo } = req.context.models;
         const { id } = req.params;
         const { resumoProfissional } = req.body;
 
@@ -95,6 +98,7 @@ const updateCurriculoById = async (req, res) => {
 const deleteCurriculoById = async (req, res) => {
     const { id } = req.params;
     try {
+        const { Curriculo } = req.context.models;
         const curriculo = await Curriculo.findByPk(id);
         if (!curriculo) {
             return res.status(404).send({

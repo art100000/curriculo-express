@@ -32,6 +32,7 @@ const createExperiencia = async (req, res) => {
 
 const getAllExperiencias = async (req, res) => {
     try {
+        const { Experiencia } = req.context.models;
         const experiencias = await Experiencia.findAll();
         if (experiencias.length === 0) {
             return res.status(204).send({
@@ -51,6 +52,7 @@ const getAllExperiencias = async (req, res) => {
 
 const getExperienciaById = async (req, res) => {
     try {
+        const { Experiencia } = req.context.models;
         const { id } = req.params;
         const experiencia = await Experiencia.findByPk(id);
         if (!experiencia) {
@@ -71,6 +73,7 @@ const getExperienciaById = async (req, res) => {
 
 const updateExperienciaById = async (req, res) => {
     try {
+        const { Experiencia } = req.context.models;
         const { id } = req.params;
         const { empresa, cargo, dataInicio, dataTermino, descricaoAtividades } = req.body;
 
@@ -102,6 +105,7 @@ const updateExperienciaById = async (req, res) => {
 
 const deleteExperienciaById = async (req, res) => {
     try {
+        const { Experiencia } = req.context.models;
         const { id } = req.params;
         const experiencia = await Experiencia.findByPk(id);
         if (!experiencia) {
